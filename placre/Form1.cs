@@ -10,6 +10,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+
 
 namespace placre
 {
@@ -44,13 +48,12 @@ namespace placre
             //main.SetPositionByKeywords("");
             GMapPolygon polygon = new GMapPolygon(points, "Acre Plot");
             polygons.Polygons.Add(polygon);
-
             polygon.Fill = new SolidBrush(Color.FromArgb(50, Color.Red));
             polygon.Stroke = new Pen(Color.Red, 1);
             
         }
 
-        private void main_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void main_MouseDoubleClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
@@ -59,9 +62,30 @@ namespace placre
                 GMapMarker marker = new GMarkerGoogle(
                     new PointLatLng(lat,lng),
                     GMarkerGoogleType.red_dot);
+                
                 polygons.Markers.Add(marker);
                 points.Add(new PointLatLng(lat, lng));
             }
+        }
+
+        private void main_OnMarkerEnter(GMapMarker item)
+        {
+            
+        }
+
+        private void main_OnMarkerLeave(GMapMarker item)
+        {
+
+        }
+
+        private void main_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+
+        }
+
+        private void main_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+
         }
     }
 }

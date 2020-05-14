@@ -59,8 +59,12 @@
             this.main.Size = new System.Drawing.Size(581, 454);
             this.main.TabIndex = 0;
             this.main.Zoom = 13D;
+            this.main.OnMarkerEnter += new GMap.NET.WindowsForms.MarkerEnter(this.main_OnMarkerEnter);
+            this.main.OnMarkerLeave += new GMap.NET.WindowsForms.MarkerLeave(this.main_OnMarkerLeave);
             this.main.Load += new System.EventHandler(this.main_Load);
             this.main.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.main_MouseDoubleClick);
+            this.main.MouseDown += new System.Windows.Forms.MouseEventHandler(this.main_MouseDown);
+            this.main.MouseUp += new System.Windows.Forms.MouseEventHandler(this.main_MouseUp);
             // 
             // button1
             // 

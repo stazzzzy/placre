@@ -22,3 +22,4 @@ C:\Users\Tristan\source\repos\placre\placre\obj\Debug\placre.csproj.CoreCompileI
 C:\Users\Tristan\source\repos\placre\placre\obj\Debug\placre.csproj.CopyComplete
 C:\Users\Tristan\source\repos\placre\placre\obj\Debug\placre.exe
 C:\Users\Tristan\source\repos\placre\placre\obj\Debug\placre.pdb
+C:\Users\Tristan\source\repos\placre\placre\bin\Debug\GMap.NET.WindowsPresentation.dll

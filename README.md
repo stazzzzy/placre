@@ -1,7 +1,7 @@
 # placre
 Lightweight tool intended to find acreage via satellite imagery or a property database
 
-![prototype](/example.png)
+![prototype](/demo.gif)
 
 ### Planned feaures
 - Cost calculation

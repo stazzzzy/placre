@@ -3,7 +3,7 @@ Lightweight tool intended to find acreage via satellite imagery or a property da
 
 ![prototype](/demo.gif)
 
-### Planned feaures
+### Planned features
 - Cost calculation
 - Approximate acres adjusted value based on what is on a property (house, pool, etc.)
 - Scalability

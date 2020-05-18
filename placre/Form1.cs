@@ -21,13 +21,15 @@ namespace placre
     {
         List<PointLatLng> points;
         GMapOverlay polygons;
-
         GMapOverlay markers;
+
+        Boolean mm = false; //Is a marker currently being moved?
+        GMapMarker activeMarker = null; //Temporary marker to be moved and referenced for its position
 
         public Form1()
         {
             InitializeComponent();
-            this.Text = "(Pl)Acre! 0.01a";
+            this.Text = "(Pl)Acre! 0.02a";
         }
 
         private void main_Load(object sender, EventArgs e)
@@ -46,6 +48,7 @@ namespace placre
         private void button1_Click(object sender, EventArgs e)
         {
             //main.SetPositionByKeywords("");
+            polygons.Polygons.Clear();
             GMapPolygon polygon = new GMapPolygon(points, "Acre Plot");
             polygons.Polygons.Add(polygon);
             polygon.Fill = new SolidBrush(Color.FromArgb(50, Color.Red));
@@ -70,22 +73,60 @@ namespace placre
 
         private void main_OnMarkerEnter(GMapMarker item)
         {
-            
+            if(mm == false)
+            {
+                activeMarker = item;
+            }
         }
 
         private void main_OnMarkerLeave(GMapMarker item)
         {
-
+            if(mm == false)
+            {
+                activeMarker = null;
+            }
         }
 
         private void main_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-
+            if (e.Button == System.Windows.Forms.MouseButtons.Left && mm)
+            {
+                mm = false;
+                if (activeMarker.IsMouseOver == false)
+                {
+                    activeMarker = null;
+                }
+            }
         }
 
         private void main_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            if(e.Button == System.Windows.Forms.MouseButtons.Left && main.IsMouseOverMarker)
+            {
+                mm = true;
+            }
+        }
 
+        private void main_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if(e.Button == System.Windows.Forms.MouseButtons.Left && mm)
+            {
+                var prevPos = activeMarker.Position;
+                activeMarker.Position = main.FromLocalToLatLng(e.X, e.Y);
+                for(int i = 0; i < points.Count; i++)
+                {
+                    if (points[i].Lat == prevPos.Lat && points[i].Lng == prevPos.Lng)
+                    {
+                        points[i] = activeMarker.Position;
+                        polygons.Polygons.Clear();
+                        GMapPolygon polygon = new GMapPolygon(points, "Acre Plot");
+                        polygons.Polygons.Add(polygon);
+                        polygon.Fill = new SolidBrush(Color.FromArgb(50, Color.Red));
+                        polygon.Stroke = new Pen(Color.Red, 1);
+                        break;
+                    }
+                }
+            }
         }
     }
 }

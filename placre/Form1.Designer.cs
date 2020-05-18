@@ -64,6 +64,7 @@
             this.main.Load += new System.EventHandler(this.main_Load);
             this.main.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.main_MouseDoubleClick);
             this.main.MouseDown += new System.Windows.Forms.MouseEventHandler(this.main_MouseDown);
+            this.main.MouseMove += new System.Windows.Forms.MouseEventHandler(this.main_MouseMove);
             this.main.MouseUp += new System.Windows.Forms.MouseEventHandler(this.main_MouseUp);
             // 
             // button1
